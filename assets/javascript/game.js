@@ -10,13 +10,19 @@ $(document).ready(function () {
     console.log(spaces);
 
     for (i = 0; i < randomWord.length; i++) {
-        $('#currentWord').append("<li>" + randomWord.charAt(i).toUpperCase() + "</li>");
+        $('#currentWord').append("<li id=" + i + ">" + randomWord.charAt(i).toUpperCase() + "</li>");
 
     };
 
     guessCount = 10;
     $('#guesses').append(" " + guessCount);
-    for (i = 10; i > 0; i--) {
 
-    }
-})
+    document.onkeyup = function(event){
+        var currentGuess = event.key;   
+        console.log(currentGuess);  
+        console.log(currentGuess.indexOf(randomWord))  
+    };
+
+
+        
+});
