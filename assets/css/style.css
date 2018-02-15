@@ -1,0 +1,14 @@
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    list-style: none;
+    width: 20px;
+    margin: 0 5px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    color: #FFF;
+}
+
