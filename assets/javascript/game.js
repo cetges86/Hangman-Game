@@ -20,7 +20,8 @@ $(document).ready(function () {
     document.onkeyup = function(event){
         var currentGuess = event.key;   
         console.log(currentGuess);  
-        console.log(currentGuess.indexOf(randomWord))  
+        console.log(randomWord.toLowerCase().indexOf(currentGuess)); 
+
     };
 
 
