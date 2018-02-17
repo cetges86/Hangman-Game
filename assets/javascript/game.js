@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     for (i = 0; i < randomWord.length; i++) {
         var letter = randomWord.charAt(i).toUpperCase();
-        $('#currentWord').append("<li id=" + letter + ">" + letter + "</li>");
+        $('#currentWord').append("<li class=" + letter + ">" + letter + "</li>");
 
     };
 
@@ -46,30 +46,35 @@ $(document).ready(function () {
             !lettersGuessed.includes(currentGuess) &&
             validLetter != -1) {
 
-            $('#' + currentGuess.toUpperCase() + '').addClass("revealed");
             lettersGuessed.push(currentGuess);
             $('#letters').html("Letters Guessed: <br>" + lettersGuessed);
-            lettersSolved++;
+            $('.' + currentGuess.toUpperCase() + '').addClass("revealed");
 
-            if (lettersSolved === randomWord.length) {
-                alert("You win!!");
+            lettersSolved++;
+            for (i = 0; i < randomWord.length; i++) {
+                if (randomWord.charAt(i) === currentGuess) {
+                    lettersSolved++;
+                };
             };
 
-            // for (var j = 0; j < randomWord.length; j++) {
-            //     if (randomWord.charAt(j) === currentGuess) {
-            //         lettersSolved++;
-            //         console.log(lettersSolved);
-            //         $('#' + currentGuess.toUpperCase() + '').addClass("revealed");
-            //     };
-            // };
+            for (j = 0; j < randomWord.length; j++) {
+                    $('.' + currentGuess.toUpperCase() + '').addClass("revealed");
+            };
 
-    } else if (lettersGuessed.includes(currentGuess)) {
-        alert("Letter has already been guessed!");
-    } else {
-        alert("That key isn't even a letter!")
+            console.log(lettersSolved);
+
+        } else if (lettersGuessed.includes(currentGuess)) {
+            alert("Letter has already been guessed!");
+        } else {
+            alert("That key isn't even a letter!")
+        };
+
+        if (lettersSolved === randomWord.length) {
+            alert("You win!!");
+        };
+
+
+
     };
-
-
-
 
 });
