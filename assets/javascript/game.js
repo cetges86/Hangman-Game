@@ -50,7 +50,6 @@ $(document).ready(function () {
             $('#letters').html("Letters Guessed: <br>" + lettersGuessed);
             $('.' + currentGuess.toUpperCase() + '').addClass("revealed");
 
-            lettersSolved++;
             for (i = 0; i < randomWord.length; i++) {
                 if (randomWord.charAt(i) === currentGuess) {
                     lettersSolved++;
@@ -63,16 +62,17 @@ $(document).ready(function () {
 
             console.log(lettersSolved);
 
+            if (lettersSolved === randomWord.length) {
+                alert("You win!!");
+            };    
+
         } else if (lettersGuessed.includes(currentGuess)) {
             alert("Letter has already been guessed!");
         } else {
             alert("That key isn't even a letter!")
         };
 
-        if (lettersSolved === randomWord.length) {
-            alert("You win!!");
-        };
-
+        
 
 
     };
