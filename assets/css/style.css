@@ -14,6 +14,23 @@ body {
     background-position: center top; 
 }
 
+h2 {
+    background-color:#fff;
+    opacity: .85;
+    border-radius: 5%;
+}
+.space {
+   border-bottom: none;
+}
+
+img {
+    max-height: 400px;
+    background-color: #fff;
+    opacity: .95;
+    border-radius:5%;
+    padding:5px;
+}
+
 .panel {
     margin: 0 auto;
     opacity: .9;
