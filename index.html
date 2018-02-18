@@ -1,29 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hangman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>
 </head>
+
 <body>
-    <h1>Hangman: The Game</h1>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1 class="text-center">Video Game <br> Hangman</h1>
+            <h2 class="text-center">Test your Video Game Knowledge!</h2>
 
-    <h3>Try to guess the letters!</h3>
+        </div>
 
-    <ul id="currentWord">
+        <div class="row">
+            <div class="text-center">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="text-center panel-title">Try to Guess the Missing Letters! Good luck!</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="text-center" id="currentWord"></ul>
 
-    </ul>
+                        <h3 class="text-center" id="guesses">Guesses Remaining:</h3>
 
-    <h3 id="guesses">Guesses Remaining:</h3>
+                        <div id="letterbox">
+                            <p class="text-center" id="letters">Letters Guessed:</p>
+                        </div>
 
-    <div id="letterbox">
-        <p id="letters">Letters Guessed:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+            <br>
+        </div>
+        <div id="message" class="text-center">
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="text-center">
+                <button id="reset" class="btn btn-danger">Click to Reset Game</button>
+            </div>
+            <br>
+            <div class="row">
+                <div class="text-center">
+                    <audio src="assets/images/smbfull.mp3" controls>
+                        <p>If you are reading this, it is because your browser does not support the audio element.</p>
+                    </audio>
+                </div>
+            </div>
+        </div>
     </div>
 
 
 </body>
+
 </html>

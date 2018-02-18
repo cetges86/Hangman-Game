@@ -1,25 +1,31 @@
 $(document).ready(function () {
     //all possible words, video game characters
-    var words = ["Mario", "Luigi", "DonkeyKong", "MasterChief", "Link", "SonictheHedgehog", "SamusAran", "SolidSnake", "Pikachu", "Bowser", "PrincessZelda", "LaraCroft", "Kratos", "PacMan", "Scorpion", "LiuKang", "SubZero", "DukeNukem", "NathanDrake"];
-
-
+    var words = ["Mario", "Luigi", "Donkey Kong", "Master Chief", "Link", "Sonic the Hedgehog",
+        "Samus Aran", "Solid Snake", "Pikachu", "Bowser", "Princess Zelda", "Lara Croft", "Kratos",
+        "Pac Man", "Scorpion", "Liu Kang", "Sub Zero", "Duke Nukem", "Nathan Drake"];
 
     var randomWord = words[Math.floor(Math.random() * words.length)];
     var spaces = randomWord.length;
+    var blankSpace = 0;
     console.log(randomWord);
     console.log(spaces);
 
     for (i = 0; i < randomWord.length; i++) {
         var letter = randomWord.charAt(i).toUpperCase();
-        $('#currentWord').append("<li class=" + letter + ">" + letter + "</li>");
+        if (letter === " ") {
+            blankSpace++;
+            $('#currentWord').append("    ");
+        } else {
+            $('#currentWord').append("<li class=" + letter + ">" + letter + "</li>");
+        }
 
     };
 
-    guessCount = 10;
+    guessCount = 8;
     $('#guesses').append(" " + guessCount);
-//all potential guesses
+    //all potential guesses
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    var lettersSolved = 0;
+    var lettersSolved = 0 + blankSpace;
     //array that guesses are pushed into
     var lettersGuessed = [];
 
@@ -42,8 +48,16 @@ $(document).ready(function () {
             $('#letters').html("Letters Guessed:<br> " + lettersGuessed);
             $('#guesses').html("Guesses Remaining: " + guessCount);
 
+            if (guessCount === 0) {
+                $('#message').html("<h1>Game Over :( <br> Click below to reset game</h1>");
+                var audio = new Audio('assets/images/smb_gameover.wav');
+                audio.play();
+                $('#reset').on("click", function () {
+                    location.reload();
+                })
+            };
+
         } else if (position > -1 &&
-            lettersSolved != randomWord.length &&
             !lettersGuessed.includes(currentGuess) &&
             validLetter != -1) {
 
@@ -57,25 +71,24 @@ $(document).ready(function () {
                     lettersSolved += 1;
                     console.log(lettersSolved);
                 };
-            };
+            }
             if (lettersSolved == randomWord.length) {
-                alert("You win!!");
-                $("#letters, #guesses, #currentWord").empty();
-                location.reload();
+                $('#message').html("<h1>You win! Click below to reset game</h1>");
+                var audioWin = new Audio('assets/images/smb_world_clear.wav');
+                audioWin.play();
+                $('#reset').on("click", function () {
+                    location.reload();
+                })
             };
-
+            
         } else if (lettersGuessed.includes(currentGuess)) {
             alert("Letter has already been guessed!");
-        } else if (guessCount=0){
-            alert("Sorry! Game Over");
         }
         else {
             alert("That key isn't even a letter!")
         };
 
-
-
-
     };
 
 });
+
