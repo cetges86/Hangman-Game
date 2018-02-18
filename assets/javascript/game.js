@@ -17,9 +17,10 @@ $(document).ready(function () {
 
     guessCount = 10;
     $('#guesses').append(" " + guessCount);
-
+//all potential guesses
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     var lettersSolved = 0;
+    //array that guesses are pushed into
     var lettersGuessed = [];
 
     document.onkeyup = function (event) {
@@ -35,43 +36,44 @@ $(document).ready(function () {
             !lettersGuessed.includes(currentGuess) &&
             validLetter != -1) {
 
-                guessCount--;
-                alert("Try again!");
-                lettersGuessed.push(currentGuess);
-                $('#letters').html("Letters Guessed:<br> " + lettersGuessed);
-                $('#guesses').html("Guesses Remaining: " + guessCount);
+            guessCount--;
+            alert("Try again!");
+            lettersGuessed.push(currentGuess);
+            $('#letters').html("Letters Guessed:<br> " + lettersGuessed);
+            $('#guesses').html("Guesses Remaining: " + guessCount);
 
         } else if (position > -1 &&
             lettersSolved != randomWord.length &&
             !lettersGuessed.includes(currentGuess) &&
             validLetter != -1) {
 
-            // for (j = 0; j < randomWord.length; j++) {
-                // };
-            for (k = 0; k < randomWord.length; k++) {
-                    $('.' + currentGuess.toUpperCase() + '').addClass("revealed");
-                    
-                    if (randomWord.charAt(k) === currentGuess) {
-                        lettersSolved +=1;
-                    };
-            };
-
             lettersGuessed.push(currentGuess);
             $('#letters').html("Letters Guessed: <br>" + lettersGuessed);
             $('.' + currentGuess.toUpperCase() + '').addClass("revealed");
-            console.log(lettersSolved);
 
-            if (lettersSolved === randomWord.length) {
+            for (k = 0; k < randomWord.length; k++) {
+                $('.' + currentGuess.toUpperCase() + '').addClass("revealed");
+                if (randomWord.charAt(k).toLowerCase() == currentGuess) {
+                    lettersSolved += 1;
+                    console.log(lettersSolved);
+                };
+            };
+            if (lettersSolved == randomWord.length) {
                 alert("You win!!");
-            };    
+                $("#letters, #guesses, #currentWord").empty();
+                location.reload();
+            };
 
         } else if (lettersGuessed.includes(currentGuess)) {
             alert("Letter has already been guessed!");
-        } else {
+        } else if (guessCount=0){
+            alert("Sorry! Game Over");
+        }
+        else {
             alert("That key isn't even a letter!")
         };
 
-        
+
 
 
     };
