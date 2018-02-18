@@ -20,8 +20,6 @@ $(document).ready(function () {
 
     var spaces = randomWord.length;
     var blankSpace = 0;
-    console.log(randomWord);
-    console.log(spaces);
 
     for (i = 0; i < randomWord.length; i++) {
         var letter = randomWord.charAt(i).toUpperCase();
