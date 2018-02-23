@@ -44,8 +44,14 @@ $(document).ready(function () {
         $(".buttons").append("<button value=" + alphabet[a] + ">" + alphabet[a] + "</button>");
     };
 
-    document.onkeyup = function (event) {
-        var currentGuess = event.key;
+    $(document).on('keyup click', function (event) {
+        var currentGuess = '';
+        if (event.key) {
+            currentGuess = event.key;
+        } else {
+            currentGuess = $(event.target).val();
+        }
+                console.log(currentGuess);
         var validLetter = alphabet.indexOf(currentGuess);
         console.log(currentGuess);
         var position = randomWord.toLowerCase().indexOf(currentGuess);
@@ -94,6 +100,7 @@ $(document).ready(function () {
                 $('#message').html("<h2>You win! Click below to reset game</h2>");
                 var audioWin = new Audio('assets/images/smb_world_clear.wav');
                 audioWin.play();
+                $('audio')[0].pause();
                 $('#reset').on("click", function () {
                     location.reload();
                 })
@@ -110,7 +117,7 @@ $(document).ready(function () {
             alert("That key isn't even a letter!")
         };
 
-    };
+    });
 
 });
 
