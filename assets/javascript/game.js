@@ -18,7 +18,6 @@ $(document).ready(function () {
     var gameImage = images[randNumber];
     var gameName = game[randNumber];
 
-    var spaces = randomWord.length;
     var blankSpace = 0;
 
     for (i = 0; i < randomWord.length; i++) {
@@ -40,13 +39,16 @@ $(document).ready(function () {
     //array that guesses are pushed into
     var lettersGuessed = [];
 
+
+    for(a = 0; a < alphabet.length; a++){
+        $(".buttons").append("<button value=" + alphabet[a] + ">" + alphabet[a] + "</button>");
+    };
+
     document.onkeyup = function (event) {
         var currentGuess = event.key;
         var validLetter = alphabet.indexOf(currentGuess);
         console.log(currentGuess);
         var position = randomWord.toLowerCase().indexOf(currentGuess);
-
-
 
         if (position === -1 &&
             lettersSolved != randomWord.length &&
@@ -87,6 +89,7 @@ $(document).ready(function () {
                     console.log(lettersSolved);
                 };
             }
+
             if (lettersSolved == randomWord.length) {
                 $('#message').html("<h2>You win! Click below to reset game</h2>");
                 var audioWin = new Audio('assets/images/smb_world_clear.wav');
