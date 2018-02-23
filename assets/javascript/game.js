@@ -2,7 +2,7 @@ $(document).ready(function () {
     //all possible words, video game characters
     var words = ["Mario", "Luigi", "Donkey Kong", "Master Chief", "Link", "Sonic the Hedgehog",
         "Samus Aran", "Solid Snake", "Pikachu", "Bowser", "Princess Zelda", "Lara Croft", "Kratos",
-        "Pac Man", "Scorpion", "Liu Kang", "Sub Zero", "Duke Nukem", "Nathan Drake", "Ganondorf", "Princess Peach", "Cloud", "Toad", "Yoshi", "Gordon Freeman",
+        "PacMan", "Scorpion", "Liu Kang", "Sub Zero", "Duke Nukem", "Nathan Drake", "Ganondorf", "Princess Peach", "Cloud", "Toad", "Yoshi", "Gordon Freeman",
         "Mega Man", "Kirby"];
 
     var images = ["mario.png", "luigi.png", "donkeykong.png", "masterchief.png", "link.png", "sonic.png",
