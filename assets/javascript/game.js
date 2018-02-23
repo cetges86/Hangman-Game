@@ -24,7 +24,7 @@ $(document).ready(function () {
         var letter = randomWord.charAt(i).toUpperCase();
         if (letter === " ") {
             blankSpace++;
-            $('#currentWord').append("<li class='space'>___</li>");
+            $('#currentWord').append("<br>");
         } else {
             $('#currentWord').append("<li class=" + letter + ">" + letter + "</li>");
         }
