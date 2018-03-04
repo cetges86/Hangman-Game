@@ -19,6 +19,9 @@ $(document).ready(function () {
     var gameName = game[randNumber];
 
     var blankSpace = 0;
+    $('#wrong').hide();
+    $('#alert').hide();
+    $('#bad').hide();
 
     for (i = 0; i < randomWord.length; i++) {
         var letter = randomWord.charAt(i).toUpperCase();
@@ -62,7 +65,7 @@ $(document).ready(function () {
             validLetter != -1) {
 
             guessCount--;
-            alert("Try again!");
+            $('#wrong').show(500).fadeOut(1000);
             lettersGuessed.push(currentGuess);
             $('#letters').html("Letters Guessed:<br> " + lettersGuessed);
             $('#guesses').html("Guesses Remaining: " + guessCount);
@@ -111,10 +114,10 @@ $(document).ready(function () {
             };
 
         } else if (lettersGuessed.includes(currentGuess)) {
-            alert("Letter has already been guessed!");
+            $('#alert').show(500).fadeOut(1000);
         }
         else {
-            alert("That key isn't even a letter!")
+            $('#bad').show(500).fadeOut(1000);
         };
 
     });
